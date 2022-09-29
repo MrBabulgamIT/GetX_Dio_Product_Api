@@ -1,4 +1,5 @@
 import 'package:assignment_ctrends/screen/homepage.dart';
+import 'package:assignment_ctrends/screen/nav_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,7 +18,17 @@ class _GetXPropertyState extends State<GetXProperty> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("GetX Property"), leading: Icon(Icons.menu)),
+      drawer: Nav_Drawer(),
+      backgroundColor: Colors.black12,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          "Get Property ",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.arrow_forward),
           onPressed: () {

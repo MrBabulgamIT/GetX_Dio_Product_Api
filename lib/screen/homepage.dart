@@ -1,6 +1,7 @@
 import 'package:assignment_ctrends/controller/main_controller.dart';
 import 'package:assignment_ctrends/controller/product_controller.dart';
 import 'package:assignment_ctrends/screen/description_product.dart';
+import 'package:assignment_ctrends/screen/nav_drawer.dart';
 import 'package:assignment_ctrends/widget/colorr.dart';
 import 'package:assignment_ctrends/widget/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -13,39 +14,21 @@ class HomePage extends StatelessWidget with BaseController {
   Widget build(BuildContext context) {
     double height = Get.height;
     double width = Get.width;
+
     productCon.getUsersData();
     return Scaffold(
+      drawer: Nav_Drawer(),
       backgroundColor: Colors.black12,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Image.asset('images/manu.png'),
-        ),
-        actions: [
-          Container(
-            height: 65,
-            width: 65,
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, 15),
-                    blurRadius: 22,
-                    color: Colors.white.withOpacity(0.52)),
-                BoxShadow(
-                    offset: Offset(-15, -15),
-                    blurRadius: 20,
-                    color: Colors.white),
-              ],
-            ),
-            child: Image(image: AssetImage("images/shopping_cart.png")),
-          ),
-        ],
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Scaffold.of(context).openDrawer();
+        //   },
+        //   icon: Image.asset('images/manu.png'),
+        // ),
       ),
       body: Obx(() {
         if (productController.isLoading.value)
@@ -74,7 +57,7 @@ class HomePage extends StatelessWidget with BaseController {
                           mainAxisSpacing: 7,
                           crossAxisSpacing: 10,
                           childAspectRatio: 0.75,
-                          mainAxisExtent: height * 0.40),
+                          mainAxisExtent: height * 0.41),
                       shrinkWrap: true,
                       //physics: BouncingScrollPhysics(),
                       itemCount: productCon.products.length,
@@ -146,7 +129,7 @@ class HomePage extends StatelessWidget with BaseController {
                                               Text(
                                                 "****",
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.orange,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 22),
                                               ),
